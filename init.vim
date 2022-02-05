@@ -2,9 +2,11 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
+Plug 'xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 syntax on
@@ -16,7 +18,9 @@ set number
 set relativenumber
 set mouse=a
 set inccommand=split
-
+set tabstop=2 
+set shiftwidth=2 
+set expandtab
 
 let mapleader="\<space>"
 
@@ -33,11 +37,13 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+nnoremap <leader>pp :Prettier<cr>
+
 " =====================================================
 " =====================================================
 " =====================================================
 
-
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
